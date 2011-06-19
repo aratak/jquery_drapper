@@ -1,0 +1,28 @@
+.decoratorWrapper {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.decoratorWrapper [data-decorator-maxlabel], 
+.decoratorWrapper [data-decorator-minlabel],
+.decoratorWrapper [data-decorator-currentlabel] {
+  position: absolute;
+  top: 100%;
+}
+
+.decoratorWrapper [data-decorator-maxlabel] {
+  right: 0;
+}
+
+.decoratorWrapper [data-decorator-minlabel] {
+  left: 0;
+}
+
+.decoratorWrapper [data-decorator-currentlabel] {
+  left: 50%;
+}
+
+
+.ui-slider {
+  display: block;
+}

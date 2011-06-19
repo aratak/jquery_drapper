@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>jquery decorator example</title>
+
+  <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.16.custom.css">
+  <link rel="stylesheet" type="text/css" href="css/custom.css">
+
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
+  <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="../jquery.decorator.js"></script>
+  <script type="text/javascript" src="../jquery.decorators/jquery.decorators.slider.js"></script>
+  <script type="text/javascript" src="../jquery.decorators/jquery.decorators.selectGroup.js"></script>
+  <script type="text/javascript">
+    $(function() {
+      $('body').decorator();
+    })
+  </script>
+</head>
+<body>
+
+  <fieldset>
+    <legend>Slider from input</legend>
+    <input type="number" min="-100" max="100" data-decorator="slider: { hideInputAttribute: true }" />
+  </fieldset>
+
+
+  <fieldset>
+    <legend>Checkboxes or radiogroup from select (depends on multiple attribute)</legend>
+    <select name="select_name" id="select_id" data-decorator="selectGroup: { hideInputAttribute: true }">
+      <option value="first">First</option>
+      <option value="second">Second</option>
+      <option value="third">Third</option>
+    </select>
+
+    <hr />
+
+    <select name="select_name" id="select_id" multiple="multiple" data-decorator="selectGroup: { hideInputAttribute: true }">
+      <option value="first">First</option>
+      <option value="second">Second</option>
+      <option value="third">Third</option>
+    </select>
+
+  </fieldset>
+
+
+
+</body>
+</html>
