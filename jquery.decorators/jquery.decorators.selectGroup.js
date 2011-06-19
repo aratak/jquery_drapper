@@ -18,7 +18,7 @@
           name: $(decoree).attr('name'),
           id: $(decoree).attr('id') + "_" + i,
           value: optionTag.val(),
-          selected: optionTag.is(':selected')
+          checked: optionTag.is(':selected')
         });
 
         var labelTag = $(document.createElement("label")).attr({
@@ -26,6 +26,17 @@
         }).html(optionTag.val());
 
         return liTag.append(inputTag).append(labelTag);
+      };
+      var hideBasicInput = function() {
+        console.log(decoree)
+        if(decoree.config.hideInputAttribute) {
+          $(decoree).css({
+            visibility: 'hidden',
+            position: 'absolute',
+            zIndex: '-1'
+          });
+        }
+        return true;
       };
 
       var removeDecoree = function() {
@@ -41,7 +52,7 @@
         list.append(createListItem(optionTag, i));
       });
 
-      return decoree.wrapper().append(list) && removeDecoree();
+      return decoree.wrapper().append(list) && hideBasicInput() && removeDecoree();
     }
   });
 })(jQuery)
