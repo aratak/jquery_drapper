@@ -6,10 +6,6 @@
     options.decoratorIdentifier = "data-decorator";
     options.elementSelector = options.elementSelector || '[' + options.decoratorIdentifier + ']';
 
-    // options.attrType = options.attrType || 'data-decorator-type';
-    // options.fakeDivStyleClass = "decoratorWrapper";
-    // options.hideInputAttribute = "data-decorator-hide-input";
-
     var decoratorMethods = function(decoree){
       var _hashConfig = (function() {
         var _rawAttributeData = $(decoree).attr(options.decoratorIdentifier);
@@ -35,7 +31,7 @@
       function wrapper() {
         var findFakeDiv = function() {
           var a = $(decoree).next('div[data-decorator-wrapper]');
-          if(a.length == 0) {
+          if (a.length == 0) {
             return false;
           } else {
             return a;
@@ -43,8 +39,8 @@
         };
         var createFakeDiv = function() {
           var fakeDiv = $(document.createElement('div'));
-          fakeDiv.attr({ 
-            'data-decorator-wrapper': true, 
+          fakeDiv.attr({
+            'data-decorator-wrapper': true,
             'class': 'decoratorWrapper'
           });
           $(decoree).after(fakeDiv);
@@ -56,7 +52,7 @@
       function decoratorConverter() {
         var converterPlugin = $.decorators[type()];
 
-        if(converterPlugin === undefined) {
+        if (converterPlugin === undefined) {
           throw "Undefined decorator extention '" + name + "'. "
               + "Please, provide 'jquery.decorator.'" + name + "' plugin. "
               + "See https://github.com/aratak/jquery.decorator/ for details."
