@@ -76,10 +76,11 @@
 
     return this.each(function() {
       $(this).find(options.elementSelector).each(function() {
-        if(!$.isFunction(this.isDecoree)) {
+        if (!this.isDecoree) {
           decoratorMethods(this);
         }
       });
     });
   }
 })(jQuery);
+
