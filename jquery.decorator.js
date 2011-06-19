@@ -3,14 +3,36 @@
 
   $.fn.decorator = function(options) {
     options = $.extend({}, options);
-    options.elementSelector = options.elementSelector || '[data-decorate]';
-    options.attrType = options.attrType || 'data-decorator-type';
-    options.fakeDivStyleClass = "decoratorWrapper";
-    options.hideInputAttribute = "data-decorator-hide-input";
+    options.decoratorIdentifier = "data-decorator";
+    options.elementSelector = options.elementSelector || '[' + options.decoratorIdentifier + ']';
 
-    var decoratorMethods = {
-      wrapper: function() {
-        var decoree = this;
+    // options.attrType = options.attrType || 'data-decorator-type';
+    // options.fakeDivStyleClass = "decoratorWrapper";
+    // options.hideInputAttribute = "data-decorator-hide-input";
+
+    var decoratorMethods = function(decoree){
+      var _hashConfig = (function() {
+        var _rawAttributeData = $(decoree).attr(options.decoratorIdentifier);
+        var result = {};
+
+        try {
+          var _attributeData = eval( "({" + _rawAttributeData + "})" );
+        } catch(e) {
+          throw("Decorator attributes are invalid. It should be as 'decoratorName: config'. 'config' is a JSON. \n"
+              + "Original error message: \n" + e.message );
+        }
+
+        $.each(_attributeData, function(key, value) {
+          result['decoratorType'] = key;
+          result['decoratorConfig'] = value;
+        });
+        return result;
+      })()
+
+      var type = function() { return _hashConfig.decoratorType };
+      var config = function() { return _hashConfig.decoratorConfig };
+
+      function wrapper() {
         var findFakeDiv = function() {
           var a = $(decoree).next('div[data-decorator-wrapper]');
           if(a.length == 0) {
@@ -29,40 +51,37 @@
           return fakeDiv;
         };
         return findFakeDiv() || createFakeDiv();
-      },
-      hideBasicInput: function() {
-        if($(this).attr(options.hideInputAttribute)) {
-          $(this).css({
-            visibility: 'hidden',
-            position: 'absolute',
-            zIndex: '-1'
-          });
-          return true;
-        } else {
-          return false;
-        }
-      },
-      decorate: function() {
-        var decoree = this;
-        var decoratorConverterName = $(this).attr(options.attrType);
-        var decoratorConverter = $.decorators[decoratorConverterName];
+      };
 
-        if(decoratorConverter === undefined) {
-          throw "Undefined decorator extention '" + decoratorConverterName + "'. "
-              + "Please, provide 'jquery.decorator.'" + decoratorConverterName + "' plugin. "
+      function decoratorConverter() {
+        var converterPlugin = $.decorators[type()];
+
+        if(converterPlugin === undefined) {
+          throw "Undefined decorator extention '" + name + "'. "
+              + "Please, provide 'jquery.decorator.'" + name + "' plugin. "
               + "See https://github.com/aratak/jquery.decorator/ for details."
         }
 
-        this.hideBasicInput();
-        return decoratorConverter.call(decoree);
-      }
+        return converterPlugin.call(decoree);
+      };
+
+      function init() {
+        $.extend(decoree, {
+          isDecoree: true,
+          type: type(),
+          config: config(),
+          wrapper: wrapper,
+        });
+        return decoratorConverter();
+      };
+
+      return init();
     }
 
     return this.each(function() {
       $(this).find(options.elementSelector).each(function() {
-        if(!$.isFunction(this.decorate)) {
-          $.extend(this, decoratorMethods);
-          this.decorate();
+        if(!$.isFunction(this.isDecoree)) {
+          decoratorMethods(this);
         }
       });
     });
