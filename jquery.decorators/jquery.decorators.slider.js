@@ -5,7 +5,7 @@
         + "See https://github.com/aratak/jquery.decorator/ for details."
   }
 
-  $.decorators = (function() { return {
+  $.decorators = $.extend($.decorators, {
     slider: function() {
       if(!$.isFunction($.fn.slider)) {
         throw "decorator.slider work with jquery-ui slider. Please, require that"
@@ -17,26 +17,30 @@
         html = (html === undefined) ? '' : html;
         return $(document.createElement(elementName)).attr(attributes).html(html);
       };
+      var getInt = function(val) {
+        return isNaN(parseInt(val)) ? 0 : parseInt(val);
+      };
+      var setLabel = function() {
+        return $(currentLabel).html( getInt($(decoree).val()) );
+      };
       var minLabel = elementFromParams({'data-decorator-minlabel': true}, $(decoree).attr('min'));
       var maxLabel = elementFromParams({'data-decorator-maxlabel': true}, $(decoree).attr('max'));
       var currentLabel = elementFromParams({'data-decorator-currentlabel': true}, $(decoree).val());
       var slider = elementFromParams({'data-decorator-slider': true});
       decoree.wrapper().append(maxLabel).append(minLabel).append(slider).append(currentLabel);
 
-      $(decoree).change(function() {
-        $(currentLabel).html( this.value );
-      });
+      $(decoree).change(setLabel);
 
       $(slider).slider({
         min: $(decoree).attr('min'),
         max: $(decoree).attr('max'),
         step: (parseInt($(decoree).attr('step')) || 1),
-        value: parseInt($(decoree).val()),
+        value: getInt($(decoree).val()),
         slide: function(event, ui) {
           $(decoree).val( ui.value );
           $(decoree).trigger("change");
         }
       });
     }
-  } })();
+  });
 })(jQuery)
