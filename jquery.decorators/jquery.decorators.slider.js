@@ -19,8 +19,13 @@
       };
       var minLabel = elementFromParams({'data-decorator-minlabel': true}, $(decoree).attr('min'));
       var maxLabel = elementFromParams({'data-decorator-maxlabel': true}, $(decoree).attr('max'));
+      var currentLabel = elementFromParams({'data-decorator-currentlabel': true}, $(decoree).val());
       var slider = elementFromParams({'data-decorator-slider': true});
-      decoree.wrapper().append(maxLabel).append(minLabel).append(slider);
+      decoree.wrapper().append(maxLabel).append(minLabel).append(slider).append(currentLabel);
+
+      $(decoree).change(function() {
+        $(currentLabel).html( this.value );
+      });
 
       $(slider).slider({
         min: $(decoree).attr('min'),
@@ -29,6 +34,7 @@
         value: parseInt($(decoree).val()),
         slide: function(event, ui) {
           $(decoree).val( ui.value );
+          $(decoree).trigger("change");
         }
       });
     }
