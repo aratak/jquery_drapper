@@ -5,7 +5,7 @@
         + "See https://github.com/aratak/jquery.decorator/ for details."
   }
 
-  $.extend($.decorators, {
+  $.decorators = (function() { return {
     slider: function() {
       if(!$.isFunction($.fn.slider)) {
         throw "decorator.slider work with jquery-ui slider. Please, require that"
@@ -32,5 +32,5 @@
         }
       });
     }
-  });
+  } })();
 })(jQuery)
