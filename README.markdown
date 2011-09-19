@@ -9,7 +9,7 @@ This plugin helps doing theese two steps.
 
 This plugin requires [jquery](http://jquery.com/). 
 
-Add ```jquery.decorator.js``` to the project. Mark this elements with ```data-decorate``` attribute and initiate the plugin: 
+Add `jquery.decorator.js` to the project. Mark DOM elements that you want to change with `data-decorate` attribute and initiate the plugin: 
 
 ``` JavaScript
   $(document).ready(function() {
@@ -19,9 +19,9 @@ Add ```jquery.decorator.js``` to the project. Mark this elements with ```data-de
 
 ## writing own decorators ##
 
-Decorators should be added in ```$.decorators``` object. Use jQuery.extend for adding a new decorator. Here is an example:
+Decorators should be added in `$.decorators` object. Use jQuery.extend for adding a new decorator. Here is an example:
 
-``` JavaScript
+``` javascript
 $.decorators = $.extend($.decorators, {
   myDecorator: function() {
     console.log("The special code, writing for html elements with decorator type 'myDecorator'");
