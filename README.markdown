@@ -9,7 +9,7 @@ This plugin helps doing theese two steps.
 
 This plugin requires [jquery](http://jquery.com/). 
 
-Add ```jquery.decorator.js``` to the project. This plugin define the elements, which you will change. Mark this elements with ```data-decorate``` attribute and initiate the plugin: 
+Add ```jquery.decorator.js``` to the project. Mark this elements with ```data-decorate``` attribute and initiate the plugin: 
 
 ``` JavaScript
   $(document).ready(function() {
@@ -52,7 +52,7 @@ After requiring that, you will be able to write the following:
   </head>
   <body>
     
-    <div data-decorator="myDecorator: {specialTactic: true}"></div>
+    <div data-decorator="myDecorator: {specialTactics: true}"></div>
     
   <body>
 </html>
