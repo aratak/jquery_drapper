@@ -23,7 +23,7 @@
 
         var labelTag = $(document.createElement("label")).attr({
           for: $(decoree).attr('id') + "_" + i
-        }).html(optionTag.val());
+        }).html(optionTag.val().replace(/(<([^>]+)>)/ig,""));
 
         return liTag.append(inputTag).append(labelTag);
       };
