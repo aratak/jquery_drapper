@@ -1,4 +1,4 @@
-# jquery.drapper plugin #
+# jquery_drapper plugin #
 
  - when you need to write javascript, create a plugin. Do not write your own code in global namespace
  - your own js code should be unobtrusive
@@ -9,7 +9,7 @@ This plugin helps doing theese two steps.
 
 This plugin requires [jquery](http://jquery.com/).
 
-Add `jquery.drapper.js` to the project. Mark DOM elements that you want to change with `data-decorate` attribute and initiate the plugin:
+Add `jquery_drapper.js` to the project. Mark DOM elements that you want to change with `data-decorate` attribute and initiate the plugin:
 
 ``` JavaScript
   $(document).ready(function() {
@@ -44,8 +44,8 @@ After requiring that, you will be able to write the following:
 <html>
   <head>
     <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="jquery.drapper.js"></script>
-    <script type="text/javascript" src="jquery.drappers.myDrapper.js"></script>
+    <script type="text/javascript" src="jquery_drapper.js"></script>
+    <script type="text/javascript" src="jquery_drappers.myDrapper.js"></script>
     <script type="text/javascript">
       $('body').drapper();
     </script>
