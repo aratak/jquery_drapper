@@ -1,11 +1,11 @@
 (function($) {
-  if($.fn.decorator === undefined) {
-    throw "$.decorator plugin hasn't been required"
-        + "This plugin depends from 'jquery.decorator' plugin. "
-        + "See https://github.com/aratak/jquery.decorator/ for details."
+  if($.fn.drapper === undefined) {
+    throw "$.drapper plugin hasn't been required"
+        + "This plugin depends from 'jquery.drapper' plugin. "
+        + "See https://github.com/aratak/jquery.drapper/ for details."
   }
 
-  $.decorators = $.extend($.decorators, {
+  $.drappers = $.extend($.drappers, {
     selectGroup: function() {
       var decoree = this;
       var decoreeType = $(decoree).attr('multiple') ? "checkbox" : "radio";
@@ -44,8 +44,8 @@
       }
 
       var list = $(document.createElement("ul")).attr({
-        'data-decorator-list': true
-      }).addClass('decoratorList decoratorRadioGroup');
+        'data-drapper-list': true
+      }).addClass('drapperList drapperRadioGroup');
 
 
       $.each($(decoree).find('option'), function(i, optionTag) {

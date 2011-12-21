@@ -1,36 +1,36 @@
 (function($) {
-  $.decorators = {};
+  $.drappers = {};
 
-  $.fn.decorator = function(options) {
+  $.fn.drapper = function(options) {
     options = $.extend({}, options);
-    options.decoratorIdentifier = "data-decorator";
-    options.elementSelector = options.elementSelector || '[' + options.decoratorIdentifier + ']';
+    options.drapperIdentifier = "data-drapper";
+    options.elementSelector = options.elementSelector || '[' + options.drapperIdentifier + ']';
 
-    var decoratorMethods = function(decoree){
+    var drapperMethods = function(decoree){
       var _hashConfig = (function() {
-        var _rawAttributeData = $(decoree).attr(options.decoratorIdentifier);
+        var _rawAttributeData = $(decoree).attr(options.drapperIdentifier);
         var result = {};
 
         try {
           var _attributeData = eval( "({" + _rawAttributeData + "})" );
         } catch(e) {
-          throw("Decorator attributes are invalid. It should be as 'decoratorName: config'. 'config' is a JSON. \n"
+          throw("Drapper attributes are invalid. It should be as 'drapperName: config'. 'config' is a JSON. \n"
               + "Original error message: \n" + e.message );
         }
 
         $.each(_attributeData, function(key, value) {
-          result['decoratorType'] = key;
-          result['decoratorConfig'] = value;
+          result['drapperType'] = key;
+          result['drapperConfig'] = value;
         });
         return result;
       })()
 
-      var type = function() { return _hashConfig.decoratorType };
-      var config = function() { return _hashConfig.decoratorConfig };
+      var type = function() { return _hashConfig.drapperType };
+      var config = function() { return _hashConfig.drapperConfig };
 
       function wrapper() {
         var findFakeDiv = function() {
-          var a = $(decoree).next('div[data-decorator-wrapper]');
+          var a = $(decoree).next('div[data-drapper-wrapper]');
           if (a.length == 0) {
             return false;
           } else {
@@ -40,8 +40,8 @@
         var createFakeDiv = function() {
           var fakeDiv = $(document.createElement('div'));
           fakeDiv.attr({
-            'data-decorator-wrapper': true,
-            'class': 'decoratorWrapper'
+            'data-drapper-wrapper': true,
+            'class': 'drapperWrapper'
           });
           $(decoree).after(fakeDiv);
           return fakeDiv;
@@ -49,13 +49,13 @@
         return findFakeDiv() || createFakeDiv();
       };
 
-      function decoratorConverter() {
-        var converterPlugin = $.decorators[type()];
+      function drapperConverter() {
+        var converterPlugin = $.drappers[type()];
 
         if (converterPlugin === undefined) {
-          throw "Undefined decorator extention '" + name + "'. "
-              + "Please, provide 'jquery.decorator.'" + name + "' plugin. "
-              + "See https://github.com/aratak/jquery.decorator/ for details."
+          throw "Undefined drapper extention '" + name + "'. "
+              + "Please, provide 'jquery.drapper.'" + name + "' plugin. "
+              + "See https://github.com/aratak/jquery.drapper/ for details."
         }
 
         return converterPlugin.call(decoree);
@@ -68,7 +68,7 @@
           config: config(),
           wrapper: wrapper,
         });
-        return decoratorConverter();
+        return drapperConverter();
       };
 
       return init();
@@ -77,7 +77,7 @@
     return this.each(function() {
       $(this).find(options.elementSelector).each(function() {
         if (!this.isDecoree) {
-          decoratorMethods(this);
+          drapperMethods(this);
         }
       });
     });

@@ -1,4 +1,4 @@
-# jquery.decorator plugin #
+# jquery.drapper plugin #
 
  - when you need to write javascript, create a plugin. Do not write your own code in global namespace
  - your own js code should be unobtrusive
@@ -7,25 +7,25 @@ This plugin helps doing theese two steps.
 
 ## Installation ##
 
-This plugin requires [jquery](http://jquery.com/). 
+This plugin requires [jquery](http://jquery.com/).
 
-Add `jquery.decorator.js` to the project. Mark DOM elements that you want to change with `data-decorate` attribute and initiate the plugin: 
+Add `jquery.drapper.js` to the project. Mark DOM elements that you want to change with `data-decorate` attribute and initiate the plugin:
 
 ``` JavaScript
   $(document).ready(function() {
-    $(this).decorator();
+    $(this).drapper();
   })
 ```
 
-## writing own decorators ##
+## writing own drappers ##
 
-Decorators should be added in `$.decorators` object. Use jQuery.extend for adding a new decorator. Here is an example:
+Drappers should be added in `$.drappers` object. Use jQuery.extend for adding a new drapper. Here is an example:
 
 ``` javascript
-$.decorators = $.extend($.decorators, {
-  myDecorator: function() {
-    console.log("The special code, writing for html elements with decorator type 'myDecorator'");
-    
+$.drappers = $.extend($.drappers, {
+  mydrapper: function() {
+    console.log("The special code, writing for html elements with drapper type 'myDrapper'");
+
     if(this.config.specialTactics) {
       $(this).css({
         border: '1px solid black'
@@ -44,16 +44,16 @@ After requiring that, you will be able to write the following:
 <html>
   <head>
     <script type="text/javascript" src="jquery.js"></script>
-    <script type="text/javascript" src="jquery.decorator.js"></script>
-    <script type="text/javascript" src="jquery.decorators.myDecorator.js"></script>
+    <script type="text/javascript" src="jquery.drapper.js"></script>
+    <script type="text/javascript" src="jquery.drappers.myDrapper.js"></script>
     <script type="text/javascript">
-      $('body').decorator();
+      $('body').drapper();
     </script>
   </head>
   <body>
-    
-    <div data-decorator="myDecorator: {specialTactics: true}"></div>
-    
+
+    <div data-drapper="myDrapper: {specialTactics: true}"></div>
+
   <body>
 </html>
 ```

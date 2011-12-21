@@ -1,19 +1,19 @@
 (function($) {
-  if($.fn.decorator === undefined) {
-    throw "$.decorator plugin hasn't been required"
-        + "This plugin depends from 'jquery.decorator' plugin. "
-        + "See https://github.com/aratak/jquery.decorator/ for details."
+  if($.fn.drapper === undefined) {
+    throw "$.drapper plugin hasn't been required"
+        + "This plugin depends from 'jquery.drapper' plugin. "
+        + "See https://github.com/aratak/jquery.drapper/ for details."
   }
 
-  $.decorators = $.extend($.decorators, {
+  $.drappers = $.extend($.drappers, {
     slider: function() {
       if(!$.isFunction($.fn.slider)) {
-        throw "decorator.slider work with jquery-ui slider. Please, require that"
+        throw "drapper.slider work with jquery-ui slider. Please, require that"
       }
 
       if(!this.isDecoree) {
         throw "The object is not decoree!"
-            + "See https://github.com/aratak/jquery.decorator/ for details."
+            + "See https://github.com/aratak/jquery.drapper/ for details."
       }
 
 
@@ -44,10 +44,10 @@
         return $(currentLabel).html( getInt($(decoree).val()) );
       };
 
-      var minLabel = $(decoree).attr('min') ? elementFromParams({'data-decorator-minlabel': true}, $(decoree).attr('min')) : null;
-      var maxLabel = $(decoree).attr('max') ? elementFromParams({'data-decorator-maxlabel': true}, $(decoree).attr('max')) : null;
-      var currentLabel = elementFromParams({'data-decorator-currentlabel': true}, $(decoree).val());
-      var slider = elementFromParams({'data-decorator-slider': true});
+      var minLabel = $(decoree).attr('min') ? elementFromParams({'data-drapper-minlabel': true}, $(decoree).attr('min')) : null;
+      var maxLabel = $(decoree).attr('max') ? elementFromParams({'data-drapper-maxlabel': true}, $(decoree).attr('max')) : null;
+      var currentLabel = elementFromParams({'data-drapper-currentlabel': true}, $(decoree).val());
+      var slider = elementFromParams({'data-drapper-slider': true});
       decoree.wrapper().append(maxLabel).append(minLabel).append(slider).append(currentLabel);
       hideBasicInput()
 
