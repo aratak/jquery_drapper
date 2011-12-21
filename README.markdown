@@ -21,7 +21,7 @@ Add `jquery_drapper.js` to the project. Mark DOM elements that you want to chang
 
 Drappers should be added in `$.drappers` object. Use jQuery.extend for adding a new drapper. Here is an example:
 
-``` javascript
+``` JavaScript
 $.drappers = $.extend($.drappers, {
   mydrapper: function() {
     console.log("The special code, writing for html elements with drapper type 'myDrapper'");
