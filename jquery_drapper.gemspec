@@ -8,8 +8,8 @@ Gem::Specification.new do |s|
   s.authors     = ["Alexey Osipenko"]
   s.email       = ["alexey@osipenko.in.ua"]
   s.homepage    = "http://aratak.github.com/jquery_drapper/"
-  s.summary     = %q{Make js code for view unobtrusive}
-  s.description = %q{Make js code for view unobtrusive}
+  s.summary     = %q{Make js code for view unobtrusive.}
+  s.description = %q{Create some widget from 'input' source. Unobtrusive.}
 
   s.files         = `git ls-files`.split("\n")
   s.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
