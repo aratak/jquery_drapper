@@ -25,7 +25,7 @@
         return result;
       })()
 
-      var type = function() { return _hashConfig.drapperType };
+      var _type = function() { return _hashConfig.drapperType };
       var config = function() { return _hashConfig.drapperConfig };
 
       function wrapper() {
@@ -50,7 +50,7 @@
       };
 
       function drapperConverter() {
-        var converterPlugin = $.drappers[type()];
+        var converterPlugin = $.drappers[_type()];
 
         if (converterPlugin === undefined) {
           throw "Undefined drapper extention '" + name + "'. "
@@ -63,10 +63,10 @@
 
       function init() {
         $.extend(decoree, {
-          isDecoree: true,
-          type: type(),
-          config: config(),
-          wrapper: wrapper,
+          'isDecoree': true,
+          'drapperType': _type(),
+          'config': config(),
+          'wrapper': wrapper
         });
         return drapperConverter();
       };
@@ -83,4 +83,3 @@
     });
   }
 })(jQuery);
-
