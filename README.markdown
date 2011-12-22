@@ -17,6 +17,20 @@ Add `jquery_drapper.js` to the project. Mark DOM elements that you want to chang
   })
 ```
 
+## Installation jquery.drapper with rails
+
+Just wrapper for jquery.drapper plugin for rails 3.1 application.
+
+This plugin requires [jquery](http://jquery.com/) and [jquery.drapper](https://github.com/aratak/jquery.drapper)
+Detailed description see in [jquery.drapper](https://github.com/aratak/jquery.drapper)
+
+Just add to Gemfile:
+
+```
+  gem 'rails-jquery-drapper'
+```
+
+
 ## writing own drappers ##
 
 Drappers should be added in `$.drappers` object. Use jQuery.extend for adding a new drapper. Here is an example:
