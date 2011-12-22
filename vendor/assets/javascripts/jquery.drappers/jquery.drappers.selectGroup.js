@@ -14,15 +14,15 @@
         optionTag = $(optionTag);
 
         var inputTag = $(document.createElement("input")).attr({
-          type: decoreeType,
-          name: $(decoree).attr('name'),
-          id: $(decoree).attr('id') + "_" + i,
-          value: optionTag.val(),
-          checked: optionTag.is(':selected')
+          'type': decoreeType,
+          'name': $(decoree).attr('name'),
+          'id': $(decoree).attr('id') + "_" + i,
+          'value': optionTag.val(),
+          'checked': optionTag.is(':selected')
         });
 
         var labelTag = $(document.createElement("label")).attr({
-          for: $(decoree).attr('id') + "_" + i
+          'for': $(decoree).attr('id') + "_" + i
         }).html(optionTag.val().replace(/(<([^>]+)>)/ig,""));
 
         return liTag.append(inputTag).append(labelTag);
