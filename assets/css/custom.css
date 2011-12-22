@@ -1,0 +1,60 @@
+fieldset {
+  color: #cccccc;
+  border: 1px solid #cccccc;
+  padding: 1em;
+}
+
+fieldset label {
+  display: inline;
+}
+
+fieldset input[type="text"], fieldset input[type="password"], fieldset input[type="email"], fieldset textarea, select {
+  min-width: 0;
+  width: auto;
+  display: inline-block;
+}
+
+
+.decoratorWrapper {
+  position: relative;
+  margin-bottom: 1em;
+}
+
+.decoratorWrapper [data-decorator-maxlabel], 
+.decoratorWrapper [data-decorator-minlabel],
+.decoratorWrapper [data-decorator-currentlabel] {
+  position: absolute;
+  top: 100%;
+}
+
+.decoratorWrapper [data-decorator-maxlabel] {
+  right: 0;
+}
+
+.decoratorWrapper [data-decorator-minlabel] {
+  left: 0;
+}
+
+.decoratorWrapper [data-decorator-currentlabel] {
+  left: 50%;
+}
+
+
+.ui-slider {
+  display: block;
+}
+
+ul.sortable_list li {
+  background: #555555;
+  line-height: 2.6em;
+  min-height: 2.6em;
+  padding-left: 1em;
+  padding-right: 1em;
+  cursor: -webkit-grab;
+  cursor: -moz-grab;
+}
+
+ul.sortable_list li:active {
+  cursor: -webkit-grabbing;
+  cursor: -moz-grabbing;
+}

@@ -1,10 +1,16 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
   <title>jquery drapper example</title>
-
-  <link rel="stylesheet" type="text/css" href="css/ui-lightness/jquery-ui-1.8.16.custom.css">
-  <link rel="stylesheet" type="text/css" href="css/custom.css">
+  <meta http-equiv='Content-Type' content='text/html; charset=utf-8' />
+  <!--[if lt IE 9]><script type='text/javascript' src='assets/javascript/html5.js'></script><![endif]-->
+  <script type='text/javascript' src='assets/javascript/prettify.js'></script>
+  <link rel='stylesheet' type='text/css' href='assets/css/skeleton/stylesheets/base.css' />
+  <link rel='stylesheet' type='text/css' href='assets/css/skeleton/stylesheets/skeleton.css' />
+  <link rel='stylesheet' type='text/css' href='assets/css/prettify.css' />
+  <link rel='stylesheet' type='text/css' href='assets/css/style.css' />
+  <link rel="stylesheet" type="text/css" href="assets/ui-lightness/jquery-ui-1.8.16.custom.css">
+  <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.3/jquery.min.js"></script>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.16/jquery-ui.min.js"></script>
@@ -18,57 +24,141 @@
     })
   </script>
 </head>
-<body style="background: #f0f0f0; position: relative;">
+<body onload='prettyPrint()'>
+  <div class='container'>
+    <header class='sixteen columns'>
+      <div class='nine columns alpha'>
+        <h1>jquery-drapper</h1>
+        <h2>Unobtrusive custom elements.</h2>
 
-  <fieldset>
-    <legend>Slider from input</legend>
-    <input type="number" min="-100" max="100" data-drapper="slider: { hideInputAttribute: true }" />
-  </fieldset>
+        <p>When you need to write javascript, create a plugin. Do not write your own code in global namespace
+        your own js code should be unobtrusive. This plugin helps doing theese two steps.</p>
+      </div>
 
-  <fieldset>
-    <legend>Checkboxes or radiogroup from select (depends on multiple attribute)</legend>
-    <select name="select_name" id="select_id" data-drapper="selectGroup: { hideInputAttribute: true }">
-      <option value="first">First</option>
-      <option value="second">Second</option>
-      <option value="third">Third</option>
-    </select>
+      <div class='six columns offset-by-one omega'>
+        <a href='https://github.com/aratak/jquery_drapper/zipball/master' class='download-button'>
+          Download
+          <span>Latest version from GitHub</span>
+        </a>
+      </div>
+    </header>
 
-    <hr />
+    <div class='sixteen columns'>
+      <h3>Usage and examples</h3>
 
-    <select name="multiple_select_name" id="multiple_select_id" multiple="multiple" data-drapper="selectGroup: { hideInputAttribute: true }">
-      <option value="first">First</option>
-      <option value="second">Second</option>
-      <option value="third">Third</option>
-    </select>
+      <div class='eight columns alpha'>
+        <code>
+<pre class='prettyprint'>
+$(document).ready(function() {
+  $(this).drapper();
+})
+</pre>
+        </code>
 
-    <hr />
-  </fieldset>
+        <h4>Basic usage</h4>
+        <p>Add jquery_drapper.js to the project. Mark DOM elements that you want to change with data-decorate attribute and initiate the plugin.</p>
+      </div>
 
-  <fieldset>
-    <legend>Drapper 'sortable'. Applied for form, but needs separate list of draggable elements. </legend>
+      <div class='eight columns omega'>
+        <code>
+<pre class='prettyprint'>
+$.drappers = $.extend($.drappers, {
+  mydrapper: function() {
+    console.log("The special code, writing for html elements with drapper type 'myDrapper'");
 
-    <form data-drapper="sortable: { sortableList: '.sortable_list', sortableOptions: { items: 'li', hideDecoree: false } }">
-      <label>element 1 position</label>:<input name="element_1_position" type="text" id="element_1_position" size="1" value="1" /><br />
-      <label>element 2 position</label>:<input name="element_2_position" type="text" id="element_2_position" size="1" value="2" /><br />
-      <label>element 3 position</label>:<input name="element_3_position" type="text" id="element_3_position" size="1" value="3" /><br />
-      <label>element 4 position</label>:<input name="element_4_position" type="text" id="element_4_position" size="1" value="4" /><br />
-      <label>element 5 position</label>:<input name="element_5_position" type="text" id="element_5_position" size="1" value="5" /><br />
-      <label>element 6 position</label>:<input name="element_6_position" type="text" id="element_6_position" size="1" value="6" /><br />
+    if(this.config.specialTactics) {
+      $(this).css({
+        border: '1px solid black'
+      });
+    }
+    $(this).click(function{} (
+      $(this).hide();
+    ));
+  }
+})
+</pre>
+        </code>
 
-      <!-- input type="submit" /-->
-    </form>
+        <h4>Writing own drappers</h4>
+        <p>Drappers should be added in $.drappers object. Use jQuery.extend for adding a new drapper. Here is an example.</p>
+      </div>
+    </div>
 
-    <ul class="sortable_list ui-sortable">
-      <li data-for="element_1_position">element 1</li>
-      <li data-for="element_2_position">element 2</li>
-      <li data-for="element_3_position">element 3</li>
-      <li data-for="element_4_position">element 4</li>
-      <li data-for="element_5_position">element 5</li>
-      <li data-for="element_6_position">element 6</li>
-    </ul>
+    <div class='sixteen columns'>
+      <h3>See it in action</h3>
+
+      <p>Here you could put a live example if your project happens to be something to do with web development, or maybe you could insert some images.</p>
+
+      <fieldset>
+        <legend>Slider from input</legend>
+        <input type="number" min="-100" max="100" data-drapper="slider: { hideInputAttribute: true }" />
+      </fieldset>
+
+      <fieldset>
+        <legend>Checkboxes or radiogroup from select (depends on multiple attribute)</legend>
+        <select name="select_name" id="select_id" data-drapper="selectGroup: { hideInputAttribute: true }">
+          <option value="first">First</option>
+          <option value="second">Second</option>
+          <option value="third">Third</option>
+        </select>
+
+        <hr />
+
+        <select name="multiple_select_name" id="multiple_select_id" multiple="multiple" data-drapper="selectGroup: { hideInputAttribute: true }">
+          <option value="first">First</option>
+          <option value="second">Second</option>
+          <option value="third">Third</option>
+        </select>
+
+      </fieldset>
+
+      <fieldset>
+        <legend>Drapper 'sortable'. Applied for form, but needs separate list of draggable elements. </legend>
+
+        <form style="width: 50%; float: left;" data-drapper="sortable: { sortableList: '.sortable_list', sortableOptions: { items: 'li', hideDecoree: false } }">
+          <label>element 1 position</label>:<input name="element_1_position" type="text" id="element_1_position" size="1" value="1" /><br />
+          <label>element 2 position</label>:<input name="element_2_position" type="text" id="element_2_position" size="1" value="2" /><br />
+          <label>element 3 position</label>:<input name="element_3_position" type="text" id="element_3_position" size="1" value="3" /><br />
+          <label>element 4 position</label>:<input name="element_4_position" type="text" id="element_4_position" size="1" value="4" /><br />
+          <label>element 5 position</label>:<input name="element_5_position" type="text" id="element_5_position" size="1" value="5" /><br />
+          <label>element 6 position</label>:<input name="element_6_position" type="text" id="element_6_position" size="1" value="6" /><br />
+
+          <!-- input type="submit" /-->
+        </form>
+
+        <ul style="width: 50%; float: left;" class="sortable_list ui-sortable">
+          <li data-for="element_1_position">element 1</li>
+          <li data-for="element_2_position">element 2</li>
+          <li data-for="element_3_position">element 3</li>
+          <li data-for="element_4_position">element 4</li>
+          <li data-for="element_5_position">element 5</li>
+          <li data-for="element_6_position">element 6</li>
+        </ul>
+
+        <div style="clear: both" />
 
 
-  </fieldset>
+      </fieldset>
 
+    </div>
+  </div>
+
+  <footer>
+    <div class='container'>
+      <div class='ten columns offset-by-three repo-author'>
+        <img src='http://ru.gravatar.com/userimage/7846509/0766e40cfb7ee9fbdc59436b03587b08.jpg?size=100' class='repo-author-logo' />
+
+        <p>
+          Follow me on twitter: <a href="twitter.com/alexeyosipenko">@alexeyosipenko</a>.
+        </p>
+      </div>
+
+      <div class='sixteen columns credits'>
+        <p></p>
+      </div>
+    </div>
+  </footer>
+
+  <a href='https://github.com/aratak/jquery_drapper/' class='github-ribbon'><img src='assets/images/github-ribbons/red.png' /></a>
 </body>
 </html>
