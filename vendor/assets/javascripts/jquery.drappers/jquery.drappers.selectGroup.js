@@ -27,17 +27,6 @@
 
         return liTag.append(inputTag).append(labelTag);
       };
-      var hideBasicInput = function() {
-        console.log(decoree)
-        if(decoree.config.hideInputAttribute) {
-          $(decoree).css({
-            visibility: 'hidden',
-            position: 'absolute',
-            zIndex: '-1'
-          });
-        }
-        return true;
-      };
 
       var removeDecoree = function() {
         return $(decoree).remove();
@@ -52,7 +41,7 @@
         list.append(createListItem(optionTag, i));
       });
 
-      return decoree.wrapper().append(list) && hideBasicInput() && removeDecoree();
+      return decoree.wrapper().append(list) && removeDecoree();
     }
   });
 })(jQuery)
