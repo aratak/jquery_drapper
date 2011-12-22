@@ -55,7 +55,7 @@
         if (converterPlugin === undefined) {
           throw "Undefined drapper extention '" + name + "'. "
               + "Please, provide 'jquery.drapper.'" + name + "' plugin. "
-              + "See https://github.com/aratak/jquery.drapper/ for details."
+              + "See https://github.com/aratak/jquery_drapper/ for details."
         }
 
         return converterPlugin.call(decoree);

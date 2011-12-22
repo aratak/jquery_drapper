@@ -11,13 +11,14 @@
   <script type="text/javascript" src="../vendor/assets/javascripts/jquery.drapper.js"></script>
   <script type="text/javascript" src="../vendor/assets/javascripts/jquery.drappers/jquery.drappers.slider.js"></script>
   <script type="text/javascript" src="../vendor/assets/javascripts/jquery.drappers/jquery.drappers.selectGroup.js"></script>
+  <script type="text/javascript" src="../vendor/assets/javascripts/jquery.drappers/jquery.drappers.sortable.js"></script>
   <script type="text/javascript">
     $(function() {
       $('body').drapper();
     })
   </script>
 </head>
-<body>
+<body style="background: #f0f0f0; position: relative;">
 
   <fieldset>
     <legend>Slider from input</legend>
@@ -40,6 +41,29 @@
       <option value="second">Second</option>
       <option value="third">Third</option>
     </select>
+
+    <hr />
+
+    <form data-drapper="sortable: { sortableList: '.sortable_list', sortableOptions: { items: 'li', hideDecoree: false } }">
+      <label>element 1 position</label>:<input name="element_1_position" type="text" id="element_1_position" size="1" value="1" /><br />
+      <label>element 2 position</label>:<input name="element_2_position" type="text" id="element_2_position" size="1" value="2" /><br />
+      <label>element 3 position</label>:<input name="element_3_position" type="text" id="element_3_position" size="1" value="3" /><br />
+      <label>element 4 position</label>:<input name="element_4_position" type="text" id="element_4_position" size="1" value="4" /><br />
+      <label>element 5 position</label>:<input name="element_5_position" type="text" id="element_5_position" size="1" value="5" /><br />
+      <label>element 6 position</label>:<input name="element_6_position" type="text" id="element_6_position" size="1" value="6" /><br />
+
+      <!-- input type="submit" /-->
+    </form>
+
+    <ul class="sortable_list ui-sortable">
+      <li data-for="element_1_position">element 1</li>
+      <li data-for="element_2_position">element 2</li>
+      <li data-for="element_3_position">element 3</li>
+      <li data-for="element_4_position">element 4</li>
+      <li data-for="element_5_position">element 5</li>
+      <li data-for="element_6_position">element 6</li>
+    </ul>
+
 
   </fieldset>
 
