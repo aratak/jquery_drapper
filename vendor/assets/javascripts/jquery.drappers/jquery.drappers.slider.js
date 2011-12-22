@@ -20,7 +20,7 @@
       var decoree = this;
 
       var hideBasicInput = function() {
-        if(decoree.config.hideInput) {
+        if(decoree.config.hideInputAttribute) {
           $(decoree).css({
             'visibility': 'hidden',
             'position': 'absolute',
