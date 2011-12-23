@@ -2,18 +2,18 @@
   if($.fn.drapper === undefined) {
     throw "$.drapper plugin hasn't been required"
         + "This plugin depends from 'jquery.drapper' plugin. "
-        + "See https://github.com/aratak/jquery.drapper/ for details."
+        + "See https://github.com/aratak/jquery_drapper/ for details."
   }
 
   $.drappers = $.extend($.drappers, {
     slider: function() {
       if(!$.isFunction($.fn.slider)) {
-        throw "drapper.slider work with jquery-ui slider. Please, require that"
+        throw "drapper.slider work with jquery-ui slider. Please, require that."
       }
 
       if(!this.isDecoree) {
         throw "The object is not decoree!"
-            + "See https://github.com/aratak/jquery.drapper/ for details."
+            + "See https://github.com/aratak/jquery_drapper/ for details."
       }
 
       var decoree = this;
