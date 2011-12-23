@@ -16,18 +16,30 @@
       var getData = function() {
         return $(decoree).find('option').map(function() {
           return {
+            id: $(this).val(),
             queue: $(this).attr('data-drapper-keywords'),
             hint: $(this).attr('data-drapper-hint'),
             value: $(this).html()
           }
         });
       }
+
+      var getOptionByItem = function(item) {
+        return $(decoree).find('option[value=' + item['id'] + ']')
+      }
+
       var optionsToTokenInput = function() {
         return {
           theme: 'facebook',
           propertyToSearch: "queue",
           resultsFormatter: function(item) { return "<li>" + item.hint + "</li>" },
-          tokenFormatter: function(item) { return "<li>" + item.value + "</li>" }
+          tokenFormatter: function(item) { return "<li>" + item.value + "</li>" },
+          onAdd: function(item) {
+            return getOptionByItem(item).attr('selected', 'selected');
+          },
+          onDelete: function(item) {
+            return getOptionByItem(item).removeAttr('selected');
+          }
         }
       }
 
