@@ -47,8 +47,6 @@
       };
 
       hideDecoree();
-      console.log(decoree.config.sortableList)
-      console.log(sortableOptions)
       $(decoree.config.sortableList).sortable(sortableOptions);
     }
   });
