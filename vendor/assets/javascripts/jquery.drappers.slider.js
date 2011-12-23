@@ -16,11 +16,10 @@
             + "See https://github.com/aratak/jquery.drapper/ for details."
       }
 
-
       var decoree = this;
 
       var hideBasicInput = function() {
-        if(decoree.config.hideInputAttribute) {
+        if(decoree.config.hideInput) {
           $(decoree).css({
             'visibility': 'hidden',
             'position': 'absolute',
