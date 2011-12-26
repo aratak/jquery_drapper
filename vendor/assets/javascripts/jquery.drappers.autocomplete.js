@@ -29,20 +29,20 @@
       }
 
       var optionsToTokenInput = function() {
-        return {
+        return $.extend({
           theme: 'facebook',
           propertyToSearch: "queue",
           resultsFormatter: function(item) { return "<li>" + item.hint + "</li>" },
           tokenFormatter: function(item) { return "<li>" + item.value + "</li>" },
           preventDuplicates: true,
-          hintText: decoree.config.hintText || "Type in a search term",
+          hintText: "Type in a search term",
           onAdd: function(item) {
             return getOptionByItem(item).attr('selected', 'selected');
           },
           onDelete: function(item) {
             return getOptionByItem(item).removeAttr('selected');
           }
-        }
+        }, decoree.options)
       }
 
       var tokenInput = function() {
