@@ -34,6 +34,8 @@
           propertyToSearch: "queue",
           resultsFormatter: function(item) { return "<li>" + item.hint + "</li>" },
           tokenFormatter: function(item) { return "<li>" + item.value + "</li>" },
+          preventDuplicates: true,
+          hintText: decoree.config.hintText || "Type in a search term",
           onAdd: function(item) {
             return getOptionByItem(item).attr('selected', 'selected');
           },
