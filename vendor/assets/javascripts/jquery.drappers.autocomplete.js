@@ -42,7 +42,7 @@
           onDelete: function(item) {
             return getOptionByItem(item).removeAttr('selected');
           }
-        }, decoree.options)
+        }, decoree.config);
       }
 
       var tokenInput = function() {
