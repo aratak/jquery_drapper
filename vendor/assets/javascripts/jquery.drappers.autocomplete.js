@@ -13,8 +13,8 @@
 
       var decoree = this;
 
-      var getData = function() {
-        return $(decoree).find('option').map(function() {
+      var getData = function(selectSelected) {
+        return $(decoree).find('option' + (selectSelected ? '[selected]' : '')).map(function() {
           return {
             id: $(this).val(),
             queue: $(this).attr('data-drapper-keywords'),
@@ -41,7 +41,8 @@
           },
           onDelete: function(item) {
             return getOptionByItem(item).removeAttr('selected');
-          }
+          },
+          prePopulate: getData(true)
         }, decoree.config);
       }
 
