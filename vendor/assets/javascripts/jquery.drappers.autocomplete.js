@@ -13,8 +13,8 @@
 
       var decoree = this;
 
-      var getData = function() {
-        return $(decoree).find('option').map(function() {
+      var getData = function(selectSelected) {
+        return $(decoree).find('option' + (selectSelected ? '[selected]' : '')).map(function() {
           return {
             id: $(this).val(),
             queue: $(this).attr('data-drapper-keywords'),
@@ -29,13 +29,6 @@
       }
 
       var optionsToTokenInput = function() {
-        var initialItems = $.map($(decoree).children("option[selected]"), function(option) {
-          return {
-            id: option.value,
-            value: $(option).text()
-          }
-        });
-
         return $.extend({
           theme: 'facebook',
           propertyToSearch: "queue",
@@ -49,7 +42,7 @@
           onDelete: function(item) {
             return getOptionByItem(item).removeAttr('selected');
           },
-          prePopulate: initialItems
+          prePopulate: getData(true)
         }, decoree.config);
       }
 
