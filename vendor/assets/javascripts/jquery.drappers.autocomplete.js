@@ -29,6 +29,13 @@
       }
 
       var optionsToTokenInput = function() {
+        var initialItems = $.map($(decoree).children("option[selected]"), function(option) {
+          return {
+            id: option.value,
+            value: $(option).text()
+          }
+        });
+
         return $.extend({
           theme: 'facebook',
           propertyToSearch: "queue",
@@ -41,7 +48,8 @@
           },
           onDelete: function(item) {
             return getOptionByItem(item).removeAttr('selected');
-          }
+          },
+          prePopulate: initialItems
         }, decoree.config);
       }
 
