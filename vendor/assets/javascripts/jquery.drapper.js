@@ -53,9 +53,9 @@
         var converterPlugin = $.drappers[_type()];
 
         if (converterPlugin === undefined) {
-          throw "Undefined drapper extention '" + name + "'. "
-              + "Please, provide 'jquery.drapper.'" + name + "' plugin. "
-              + "See https://github.com/aratak/jquery_drapper/ for details."
+          throw "Undefined drapper extension '" + _type() + "'. " +
+                "Please, provide 'jquery.drapper.'" + _type() + "' plugin. " +
+                "See https://github.com/aratak/jquery_drapper/ for details.";
         }
 
         return converterPlugin.call(decoree);
