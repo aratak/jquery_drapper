@@ -1,7 +1,7 @@
 (function($) {
   if($.fn.drapper === undefined) {
     throw "$.drapper plugin hasn't been required"
-        + "This plugin depends from 'jquery.drapper' plugin. "
+        + "This plugin depends on 'jquery.drapper' plugin. "
         + "See https://github.com/aratak/jquery_drapper/ for details."
   }
 
