@@ -18,16 +18,7 @@
     "dojo"          : false,
 
     "predef"        : [  // Custom globals.
-        "module",
-        "process",
-        "require",
-        "describe",
-        "beforeEach",
-        "afterEach",
-        "before",
-        "after",
-        "console",
-        "it"
+        "console"
     ],
 
 
