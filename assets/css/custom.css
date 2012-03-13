@@ -20,7 +20,7 @@ fieldset input[type="text"], fieldset input[type="password"], fieldset input[typ
   margin-bottom: 1em;
 }
 
-.decoratorWrapper [data-decorator-maxlabel], 
+.decoratorWrapper [data-decorator-maxlabel],
 .decoratorWrapper [data-decorator-minlabel],
 .decoratorWrapper [data-decorator-currentlabel] {
   position: absolute;
@@ -57,4 +57,8 @@ ul.sortable_list li {
 ul.sortable_list li:active {
   cursor: -webkit-grabbing;
   cursor: -moz-grabbing;
+}
+
+[data-drapper-maxlabel] {
+  float: right;
 }
