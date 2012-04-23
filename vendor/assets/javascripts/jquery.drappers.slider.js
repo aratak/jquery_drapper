@@ -49,7 +49,7 @@
       var sliderEvent = function(event, ui) {
         $(decoree).val( ui.value );
         $(decoree).trigger("change");
-        $('[data-drapper-currentlabel]').css({
+        $(decoree).find('[data-drapper-currentlabel]').css({
           'left': calculatePercent(ui.value) + "%"
         })
         return true;
