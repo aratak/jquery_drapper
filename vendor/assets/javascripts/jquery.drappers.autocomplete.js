@@ -1,6 +1,10 @@
 (function ($) {
   $.drappers = $.extend($.drappers, {
     autocomplete: function () {
+      if ($.browser.msie && $.browser.version >= "8.0") {
+        return false;
+      }
+           
       if (!$.isFunction($.fn.sortable)) {
         throw "Jquery plugin '$.fn.tokenInput' hasn't been required. " +
               "Check http://loopj.com/jquery-tokeninput/ ";
