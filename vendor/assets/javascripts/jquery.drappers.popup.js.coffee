@@ -5,8 +5,7 @@
 # </div>
 #
 (($) ->
-  throw "$.drapper plugin hasn't been required This plugin depends on 'jquery.drapper' "
-  +" plugin. See https://github.com/aratak/jquery_drapper/ for details." if $.fn.drapper is undefined
+  throw "$.drapper plugin hasn't been required This plugin depends on 'jquery.drapper' plugin. See https://github.com/aratak/jquery_drapper/ for details." if $.fn.drapper is undefined
 
   class Popup
     constructor: (@button, @element, @cover)->
