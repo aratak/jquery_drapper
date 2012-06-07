@@ -8,10 +8,10 @@
   throw "$.drapper plugin hasn't been required This plugin depends on 'jquery.drapper' plugin. See https://github.com/aratak/jquery_drapper/ for details." if $.fn.drapper is undefined
 
   class Popup
-    constructor: (@button, @element, @cover)->
+    constructor: (@button_selector, @element_selector, @cover)->
       @cover = $(@cover)
-      @button = $(@cover).find @button
-      @element = $(@cover).find @element
+      @button = $(@cover).find @button_selector
+      @element = $(@cover).find @element_selector
       @hide()
       @bindEvents()
 
@@ -22,12 +22,15 @@
         false
 
     show: ->
+      @hideAnotherPopups()
       @element.show()
       $('body').click => @hide()
 
+    hideAnotherPopups: ->
+      $(@button_selector).hide()
+
     hide: ->
       @element.hide()
-      ;
 
 
   $.drappers['popup'] = ->
