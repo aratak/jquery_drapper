@@ -27,7 +27,7 @@
       $('body').click => @hide()
 
     hideAnotherPopups: ->
-      $(@button_selector).hide()
+      $(@element_selector).hide()
 
     hide: ->
       @element.hide()
