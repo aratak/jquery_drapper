@@ -24,6 +24,7 @@
     show: ->
       @hideAnotherPopups()
       @element.show()
+      @element.click (e)-> e.preventDefault()
       $('body').click => @hide()
 
     hideAnotherPopups: ->
