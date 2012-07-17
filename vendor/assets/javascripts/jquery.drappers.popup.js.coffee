@@ -24,7 +24,8 @@
     show: ->
       @hideAnotherPopups()
       @element.show()
-      $('body').click => @hide()
+      $('body').click (e)=>
+        @hide() if @cover.find(e.target).length is 0
 
     hideAnotherPopups: ->
       $(@element_selector).hide()
@@ -35,6 +36,10 @@
 
   $.drappers['popup'] = ->
     throw "The object is not decoree! See https://github.com/aratak/jquery.drapper/ for details." unless @isDecoree
-    @popup = new Popup('[data-drapper-popup=button]', '[data-drapper-popup=element]', @)
+    @popup = new Popup(
+      button_selector: '[data-drapper-popup=button]'
+      element_selector:  '[data-drapper-popup=element]'
+      cover: @
+    )
 
 )(jQuery)
