@@ -8,7 +8,7 @@
   throw "$.drapper plugin hasn't been required This plugin depends on 'jquery.drapper' plugin. See https://github.com/aratak/jquery_drapper/ for details." if $.fn.drapper is undefined
 
   class Popup
-    constructor: (@button_selector, @element_selector, @cover)->
+    constructor: ({ @button_selector, @element_selector, @cover })->
       @cover = $(@cover)
       @button = $(@cover).find @button_selector
       @element = $(@cover).find @element_selector
