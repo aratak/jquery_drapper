@@ -1,7 +1,7 @@
 (function ($) {
   $.drappers = $.extend($.drappers, {
     autocomplete: function () {
-      if ($.browser.msie && $.browser.version >= "8.0") {
+      if ($.browser.msie && parseInt($.browser.version, 10) <= 8) {
         return false;
       }
            
